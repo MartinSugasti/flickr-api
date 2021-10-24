@@ -9,12 +9,14 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <% if flash[:notice] %>
-      <p><%= notice %></p>
-    <% end %>
+  <body class="bg-light">
     <% if flash[:alert] %>
-      <p><%= alert %></p>
+      <div class="alert alert-danger alert-dismissible fade show text-monospace">
+        <%= alert %>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
     <% end %>
 
     <%= yield %>
