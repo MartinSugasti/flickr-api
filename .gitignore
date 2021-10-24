@@ -71,3 +71,6 @@ yarn-debug.log*
 
 **/.DS_Store
 dump.rdb
+
+# Ignore application configuration
+/config/application.yml
