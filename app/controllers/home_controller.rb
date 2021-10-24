@@ -5,7 +5,11 @@ class HomeController < ApplicationController
                     elsif params[:tag].present?
                       { tags: params[:tag] }
                     end
-    return unless search_params.present?
+
+    unless search_params.present?
+      flash.now[:alert] = 'No user or tag provided'
+      return
+    end
 
     flickr_photos(search_params)
   end

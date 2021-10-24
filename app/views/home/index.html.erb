@@ -1,19 +1,29 @@
-<%= form_with url: root_path, method: :get, local: true do |form| %>
-  <div>
-    <%= form.text_field :user_id %>
-  </div>
+<div class="container mt-5 d-flex justify-content-center">
+  <%= form_with url: root_path, method: :get, local: true, class: 'mr-5' do |form| %>
+    <div class="input-group mb-3">
+      <%= form.text_field :user_id, class: "form-control" %>
+      <div class="input-group-append">
+        <%= form.submit "Find user's photos", class: 'btn btn-outline-primary col-lg-12' %>
+        </div>
+    </div>
+  <% end %>
 
-  <%= form.submit "Find user's photos" %>
-<% end %>
+  <%= form_with url: root_path, method: :get, local: true do |form| %>
+    <div class="input-group mb-3">
+      <%= form.text_field :tag, class: "form-control" %>
+      <div class="input-group-append">
+        <%= form.submit 'Find photos by tag', class: 'btn btn-outline-primary col-lg-12' %>
+        </div>
+    </div>
+  <% end %>
+</div>
 
-<%= form_with url: root_path, method: :get, local: true do |form| %>
-  <div>
-    <%= form.text_field :tag %>
-  </div>
-
-  <%= form.submit "Find photos by tag" %>
-<% end %>
-
-<% @photos_information&.each do |photo_information| %>
-  <%= image_tag "https://live.staticflickr.com/#{photo_information['server']}/#{photo_information['id']}_#{photo_information['secret']}_q.jpg" %>
-<% end %>
+<div class="row">
+  <% @photos_information&.each do |photo_information| %>
+    <div class="col d-flex justify-content-center my-3">
+      <%= link_to "https://live.staticflickr.com/#{photo_information['server']}/#{photo_information['id']}_#{photo_information['secret']}.jpg" do%>
+        <%= image_tag "https://live.staticflickr.com/#{photo_information['server']}/#{photo_information['id']}_#{photo_information['secret']}_q.jpg", class: 'rounded photo shadow-lg' %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
